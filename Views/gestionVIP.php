@@ -11,6 +11,7 @@
 					echo '<tr>';
 					echo '<td>'.$donnees['NOM'].'</td>';
 					echo '<td>'.$donnees['PRENOM'].'</td>';
+					echo '<td>'.$donnees['IMPORTANCE'].'</td>';
 					echo '<td><a href='.'"index.php?idvip='.$donnees['IDVIP'].'">Détails</a></td>';
 					echo '</tr>';
 				}
