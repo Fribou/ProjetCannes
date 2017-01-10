@@ -1,5 +1,8 @@
 <?php	
 	session_start();
+	
+	// Appel et initialisation des variances de gestion de la base de données
+	
 	require('Model/Model.php');
 	require('Model/UserManager.php');
 	require('Model/vipManager.php');
@@ -7,13 +10,16 @@
 	$vm = new vipManager();
 	
 	// Deconnexion
+	
 	if(isset($_GET['action'])&& $_GET['action']=='deconnexion')
 	{
 		session_destroy();
 		header ('Location: index.php');
 		exit(0);
 	}
+	
 	// Connexion
+	
 	if(isset($_GET['action']) && $_GET["action"]=='connexion')
 	{		
 		require("Views/connexion.php");	
@@ -36,7 +42,9 @@
 			}
 		}
 	}
-	// Gestion des VIP
+	
+	// Gestion des VIP avec affichage en mode Admin
+	
 	else if(isset($_GET['action']) && $_GET["action"]=='gestionVIP')
 	{
 		if(!empty($_POST))
@@ -128,11 +136,22 @@
 				// Sinon on affiche une erreur pour le champ vide
 				$message = 'Veuillez remplir le formulaire svp !';
 			}
+			
+			// Création du fichier txt dans /Views/InfoVIP
+			
+			$myfile = fopen("Views/InfoVIP/".$prenom.$nom.".txt", "wb");
+			$txt = $nom." ".$prenom;
+			fwrite($myfile, $txt);
+			fclose($myfile);
+			
 			echo $message;
 		}
 		$results = $vm -> getVIP();
 		require("Views/gestionVIP.php");
 	}
+	
+	// Affichage des détails d'un VIP en particulier
+	
 	else if(isset($_GET['idvip']))
 	{
 		if ($_GET['idvip']=="")
@@ -145,15 +164,24 @@
 			require("Views/detailsVIP.php");
 		}
 	}
+	
+	// Affichage de la liste des VIP mode non Admin
+	
 	else if(isset($_GET['action']) && $_GET["action"]=='listeVIP')
 	{
 		$results = $vm -> getVIP();
 		require("Views/listeVIP.php");
 	}
+	
+	// Page d'ajout d'un VIP
+	
 	else if(isset($_GET['action']) && $_GET["action"]=='ajoutVIP')
 	{
 		require("Views/ajoutVIP.php");
 	}
+	
+	// Page d'accueil
+	
 	else
 	{
 		require("Views/accueil.php");

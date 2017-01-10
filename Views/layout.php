@@ -7,6 +7,8 @@
 	<body>
 		<header>
 		<?php
+		
+		// Gestion de la variable de session : Existante ou non
 		if(isset($_SESSION['identifiant']))
 		{
 			echo

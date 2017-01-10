@@ -3,7 +3,8 @@
 	ob_start();
 ?>
 	<h1>Liste des VIP</h1>
-
+	
+	<!-- Affichage des VIP -->
 	<table>
 		<?php		
 			foreach($results as $donnees){

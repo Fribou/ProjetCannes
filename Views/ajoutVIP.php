@@ -1,6 +1,8 @@
 <?php
 	$title = "Ajout VIP";
 	ob_start();
+	
+	// Formulaire pour ajouter un nouveau VIP
 	echo
 	'
 		<form action="index.php?action=gestionVIP" method="post" enctype="multipart/form-data">	
