@@ -5,7 +5,7 @@
 	// Formulaire pour ajouter un nouveau VIP
 	echo
 	'
-		<form action="index.php?action=gestionVIP" method="post" enctype="multipart/form-data">	
+		<form action="index.php?action=gestionVIP" method="post" enctype="multipart/form-data" onsubmit="return confirm(\'Are you sure you want to submit this form?\');">	
 			<input name="Nom" placeholder="Nom">
 			<input name="Prenom" placeholder="Prénom">
 			<input name="Nationalite" placeholder="Nationalité">

@@ -165,6 +165,22 @@
 		}
 	}
 	
+	// Suppresion d'un VIP
+	
+	else if(isset($_GET['suppvip']))
+	{
+		if ($_GET['suppvip']=="")
+		{
+			echo 'Identifiant de VIP requis';
+		}
+		else
+		{
+			$vm -> deleteVIP($_GET['suppvip']);
+			$results = $vm -> getVIP();
+			require("Views/gestionVIP.php");
+		}
+	}
+	
 	// Affichage de la liste des VIP mode non Admin
 	
 	else if(isset($_GET['action']) && $_GET["action"]=='listeVIP')

@@ -1,10 +1,9 @@
 CSS
 Modification Perso
-Supprimer Perso
-Bouton confirmation d'envoie de formulaire
 Accueil : Description du Festival de cannes plus de l'activité
 Travailler sur l'ergonomie
 
 Compteur Jusqu'au festival
 Heure
 Mettre une colloration ou un signe indicatif pour les Jury
+Dernier VIP Ajouté

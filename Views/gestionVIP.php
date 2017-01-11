@@ -13,6 +13,7 @@
 					echo '<td>'.$donnees['PRENOM'].'</td>';
 					echo '<td>'.$donnees['IMPORTANCE'].'</td>';
 					echo '<td><a href='.'"index.php?idvip='.$donnees['IDVIP'].'">Détails</a></td>';
+					echo '<td><a href='.'"index.php?suppvip='.$donnees['IDVIP'].'" OnClick="return confirm(\'Voulez-vous vraiment supprimer ?\')">Supprimer un VIP</a></td>';
 					echo '</tr>';
 				}
 		 ?>
