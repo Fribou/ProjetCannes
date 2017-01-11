@@ -28,7 +28,6 @@
 			$identifiant = $_POST['Login'];
 			$password = $_POST['Pass'];
 			$result = $um -> getConnexion($identifiant);
-			print_r($result);
 			if ($result == NULL)
 				echo "<p> Une erreur est survenue : Identifiant inconnu.</p>";	
 			else if ($result['PASS']!=$password)
@@ -55,6 +54,13 @@
 			$titre = $_POST['Titre'];
 			$importance = $_POST['Importance'];
 			
+			// Si on reçoit un form, on va supprimer l'ancienne photo pour mettre la nouvelle
+			
+			if(isset($_GET['form']))
+			{
+					unlink("Views/PhotoVIP/".$_GET['oldprenom'].$_GET['oldnom'].".jpg");
+			}
+			
 			//Ajout d'une image à une certaine position dans mon ordinateur
 		
 			// Constantes
@@ -66,7 +72,7 @@
 			// Tableaux de donnees
 			$tabExt = array('jpg');    // Extensions autorisees
 			$infosImg = array();
-			 
+			
 			// Variables
 			$extension = '';
 			$message = '';
@@ -100,7 +106,17 @@
 								if(move_uploaded_file($_FILES['photo']['tmp_name'], TARGET.$nomImage))
 								{
 									$message = 'Upload réussi !';
-									$result = $vm -> setVIP($nom, $prenom, $nationalite, $titre, $importance);
+									if(isset($_GET['form']))
+									{
+										$vipid = $_GET['form'];
+										$result = $vm -> modifVIP($nom, $prenom, $nationalite, $titre, $importance,$vipid);
+										echo "Un VIP à été modifié";
+									}
+									else
+									{
+										$result = $vm -> setVIP($nom, $prenom, $nationalite, $titre, $importance);
+										echo "Un VIP a été ajouté";
+									}
 								}
 								else
 								{
@@ -137,13 +153,22 @@
 				$message = 'Veuillez remplir le formulaire svp !';
 			}
 			
-			// Création du fichier txt dans /Views/InfoVIP
-			
-			$myfile = fopen("Views/InfoVIP/".$prenom.$nom.".txt", "wb");
-			$txt = $nom." ".$prenom." : ".$_POST['Info'];
-			fwrite($myfile, $txt);
-			fclose($myfile);
-			
+			// Création du fichier txt dans /Views/InfoVIP selon si c'est une modification ou non
+			if(isset($_GET['form']))
+			{
+				unlink("Views/InfoVIP/".$_GET['oldprenom'].$_GET['oldnom'].".txt");
+				$myfile = fopen("Views/InfoVIP/".$prenom.$nom.".txt", "wb");
+				$txt = $nom." ".$prenom." : ".$_POST['Info'];
+				fwrite($myfile, $txt);
+				fclose($myfile);
+			}
+			else
+			{
+				$myfile = fopen("Views/InfoVIP/".$prenom.$nom.".txt", "wb");
+				$txt = $nom." ".$prenom." : ".$_POST['Info'];
+				fwrite($myfile, $txt);
+				fclose($myfile);
+			}
 			echo $message;
 		}
 		$results = $vm -> getVIP();
@@ -165,7 +190,22 @@
 		}
 	}
 	
-	// Suppresion d'un VIP
+	// Modification d'un VIP
+	
+	else if(isset($_GET['modifvip']))
+	{
+		if ($_GET['modifvip']=="")
+		{
+			echo 'Identifiant de VIP requis';
+		}
+		else
+		{
+			$results = $vm -> getDetailsVIP($_GET['modifvip']);
+			require("Views/modifVIP.php");
+		}
+	}
+	
+	// Suppresion d'un VIP : On supprime aussi la photo mais pas le fichier txt pour garder une trace du VIP dans les archives
 	
 	else if(isset($_GET['suppvip']))
 	{
@@ -202,6 +242,7 @@
 	
 	else
 	{
+		$results = $vm -> getLastVIP();
 		require("Views/accueil.php");
 	}
 ?>
