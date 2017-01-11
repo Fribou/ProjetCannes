@@ -30,6 +30,7 @@
 			</select>
 			<input type="hidden" name="MAX_FILE_SIZE" value="<?php echo MAX_SIZE; ?>" />
 			<input type="file" name="photo">
+			<textarea name="Info" rows="4" cols="50" placeholder="Informations Supplementaires"></textarea>
 			<input type="submit" name="ajoutVIP" value="Ajouter un VIP">
 		</form>
 	';

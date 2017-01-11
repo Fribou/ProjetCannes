@@ -7,3 +7,4 @@ Compteur Jusqu'au festival
 Heure
 Mettre une colloration ou un signe indicatif pour les Jury
 Dernier VIP Ajouté
+Rotating Slideshow : Image VIP

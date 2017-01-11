@@ -140,7 +140,7 @@
 			// Création du fichier txt dans /Views/InfoVIP
 			
 			$myfile = fopen("Views/InfoVIP/".$prenom.$nom.".txt", "wb");
-			$txt = $nom." ".$prenom;
+			$txt = $nom." ".$prenom." : ".$_POST['Info'];
 			fwrite($myfile, $txt);
 			fclose($myfile);
 			
