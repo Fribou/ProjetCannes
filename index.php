@@ -175,6 +175,8 @@
 		}
 		else
 		{
+			$results = $vm -> GetDetailsVIP($_GET['suppvip']);
+			unlink("Views/PhotoVIP/".$results['PRENOM'].$results['NOM'].".jpg");
 			$vm -> deleteVIP($_GET['suppvip']);
 			$results = $vm -> getVIP();
 			require("Views/gestionVIP.php");
