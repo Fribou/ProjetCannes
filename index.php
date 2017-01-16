@@ -56,7 +56,7 @@
 			
 			// Si on reçoit un form, on va supprimer l'ancienne photo pour mettre la nouvelle
 			
-			if(isset($_GET['form']))
+			if(isset($_GET['old']))
 			{
 					unlink("Views/PhotoVIP/".$_GET['oldprenom'].$_GET['oldnom'].".jpg");
 			}
@@ -106,9 +106,9 @@
 								if(move_uploaded_file($_FILES['photo']['tmp_name'], TARGET.$nomImage))
 								{
 									$message = 'Upload réussi !';
-									if(isset($_GET['form']))
+									if(isset($_GET['old']))
 									{
-										$vipid = $_GET['form'];
+										$vipid = $_GET['old'];
 										$result = $vm -> modifVIP($nom, $prenom, $nationalite, $titre, $importance,$vipid);
 										echo "Un VIP à été modifié";
 									}
@@ -154,7 +154,7 @@
 			}
 			
 			// Création du fichier txt dans /Views/InfoVIP selon si c'est une modification ou non
-			if(isset($_GET['form']))
+			if(isset($_GET['old']))
 			{
 				unlink("Views/InfoVIP/".$_GET['oldprenom'].$_GET['oldnom'].".txt");
 				$myfile = fopen("Views/InfoVIP/".$prenom.$nom.".txt", "wb");

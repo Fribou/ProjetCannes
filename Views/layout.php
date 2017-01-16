@@ -15,6 +15,7 @@
 			'
 			<nav>
 				<ul>
+					<li> <a href="index.php"> Accueil </a> </li>
 					<li> <a href="index.php?action=gestionVIP"> Gestion des VIP </a> </li>
 					<li> <a href="index.php?action=deconnexion"> Déconnexion </a></li>
 				</ul>
@@ -27,6 +28,7 @@
 			'
 			<nav>
 				<ul>
+					<li> <a href="index.php"> Accueil </a> </li>
 					<li> <a href="index.php?action=listeVIP"> Consulter les VIP </a> </li>
 					<li> <a href="index.php?action=connexion"> Connexion </a></li>
 				</ul>
