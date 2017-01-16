@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8" />
+		<link rel="stylesheet" href="Views/CSS/style.css" />
 		<title> <?php echo $title; ?> </title>
 	</head>
 	<body>
@@ -14,8 +15,8 @@
 			echo
 			'
 			<nav>
-				<ul>
-					<li> <a href="index.php"> Accueil </a> </li>
+				<ul class="fancyNav">
+					<li> <a href="index.php" class="homeIcon"> Accueil </a> </li>
 					<li> <a href="index.php?action=gestionVIP"> Gestion des VIP </a> </li>
 					<li> <a href="index.php?action=deconnexion"> Déconnexion </a></li>
 				</ul>
@@ -27,8 +28,8 @@
 			echo
 			'
 			<nav>
-				<ul>
-					<li> <a href="index.php"> Accueil </a> </li>
+				<ul class="fancyNav">
+					<li> <a href="index.php" class="homeIcon"> Accueil </a> </li>
 					<li> <a href="index.php?action=listeVIP"> Consulter les VIP </a> </li>
 					<li> <a href="index.php?action=connexion"> Connexion </a></li>
 				</ul>
