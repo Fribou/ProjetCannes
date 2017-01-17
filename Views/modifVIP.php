@@ -6,12 +6,20 @@
 	echo
 	'
 		<form action="index.php?action=gestionVIP&old='.$results['IDVIP'].'&oldnom='.$results['NOM'].'&oldprenom='.$results['PRENOM'].'" method="post" enctype="multipart/form-data" onsubmit="return confirm(\'Are you sure you want to submit this form?\');">
+			<ul class="form-style-1">
+			<li>
 			<label>Nom : </label>
 				<input name="Nom" value="'.$results['NOM'].'" required>
+			</li>
+			<li>
 			<label>Prenom : </label>
 				<input name="Prenom" value="'.$results['PRENOM'].'" required>
+			</li>
+			<li>
 			<label>Nationalité : </label>
 				<input name="Nationalite" value="'.$results['NATIONALITE'].'" required>
+			</li>
+			<li>
 			<label> Titre : </label>
 	';
 	if($results['TITRE']=="Acteur")
@@ -101,6 +109,8 @@
 	
 	echo
 	'
+		</li>
+		<li>
 		<label>Importance : </label>
 	';
 	if($results['IMPORTANCE']=="1")
@@ -285,9 +295,13 @@
 	}
 	echo
 	'
+		</li>
+		<li>
 		<label>Photo : </label>
 		<input type="hidden" name="MAX_FILE_SIZE" value="<?php echo MAX_SIZE; ?>" />
 		<input type="file" name="photo" required>	
+		</li>
+		<li>
 		<label>Informations supplémentaires : </label>
 	';
 	
@@ -299,7 +313,10 @@
 	echo
 	'
 				<textarea name="Info" rows="4" cols="50">'.$contenu_du_fichier.'</textarea>
+				</li>
+				<li>
 			<input type="submit" name="ajoutVIP" value="Modifier le VIP">
+			</li>
 		</form>
 	';
 	
