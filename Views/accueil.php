@@ -5,10 +5,13 @@
 	// Affichage du dernier VIP ajouté
 	echo
 	'
-	<label> Dernier VIP ajouté </label>
-	<h1>'.$results['NOM'].' '.$results['PRENOM'].'</h1>
-	<img src="Views/'.$results['PHOTO'].'" alt="Photo" />
+		<div class="LastVip">
+			<label> Dernier VIP ajouté </label>
+			<h1>'.$results['NOM'].' '.$results['PRENOM'].'</h1>
+			<img class="LastVipPic" src="Views/'.$results['PHOTO'].'" alt="Photo" />
+		</div>
 	';
+	
 	
 	// Decompte jusqu'au festival de cannes
 	$annee = date('Y');
@@ -31,7 +34,7 @@
 
 	setlocale(LC_ALL, 'fr_FR');
 
-	echo 'Nous sommes le '. strftime('%d %B %Y, et il est %Hh%M.').' Il reste exactement '. $d_restants .' jours, '. $H_restantes .' heures,'.$i_restantes .' minutes et '. $s_restantes .'s avant le début du festival.';
+	echo '<div class="TimeFestival">Nous sommes le '. strftime('%d %B %Y, et il est %Hh%M.').'</br></br>Il reste exactement <strong> '. $d_restants .' jours, '. $H_restantes .' heures,'.$i_restantes .' minutes et '. $s_restantes .'s</strong> avant le début du festival.</div>';
 	
 	$contenu = ob_get_clean();
 	require('Views/layout.php');
